@@ -52,7 +52,13 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  Profile: 'Profile'
+  Profile: 'Profile',
+  MealPlan: 'MealPlan',
+  Week: 'Week',
+  Day: 'Day',
+  Meal: 'Meal',
+  Ingredient: 'Ingredient',
+  Food: 'Food'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -90,6 +96,84 @@ export const ProfileScalarFieldEnum = {
 } as const
 
 export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
+
+
+export const MealPlanScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  goal: 'goal',
+  description: 'description',
+  active: 'active',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  profileId: 'profileId'
+} as const
+
+export type MealPlanScalarFieldEnum = (typeof MealPlanScalarFieldEnum)[keyof typeof MealPlanScalarFieldEnum]
+
+
+export const WeekScalarFieldEnum = {
+  id: 'id',
+  number: 'number',
+  label: 'label',
+  startDate: 'startDate',
+  mealPlanId: 'mealPlanId'
+} as const
+
+export type WeekScalarFieldEnum = (typeof WeekScalarFieldEnum)[keyof typeof WeekScalarFieldEnum]
+
+
+export const DayScalarFieldEnum = {
+  id: 'id',
+  weekday: 'weekday',
+  order: 'order',
+  weekId: 'weekId'
+} as const
+
+export type DayScalarFieldEnum = (typeof DayScalarFieldEnum)[keyof typeof DayScalarFieldEnum]
+
+
+export const MealScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  time: 'time',
+  dayId: 'dayId'
+} as const
+
+export type MealScalarFieldEnum = (typeof MealScalarFieldEnum)[keyof typeof MealScalarFieldEnum]
+
+
+export const IngredientScalarFieldEnum = {
+  id: 'id',
+  quantity: 'quantity',
+  unit: 'unit',
+  note: 'note',
+  mealId: 'mealId',
+  foodId: 'foodId'
+} as const
+
+export type IngredientScalarFieldEnum = (typeof IngredientScalarFieldEnum)[keyof typeof IngredientScalarFieldEnum]
+
+
+export const FoodScalarFieldEnum = {
+  id: 'id',
+  tbcaCode: 'tbcaCode',
+  name: 'name',
+  umidade: 'umidade',
+  glicose: 'glicose',
+  frutose: 'frutose',
+  lactose: 'lactose',
+  sacarose: 'sacarose',
+  acucaresTotaisDisponiveis: 'acucaresTotaisDisponiveis',
+  amidoTotal: 'amidoTotal',
+  amidoDisponivel: 'amidoDisponivel',
+  carboidratosDisponiveis: 'carboidratosDisponiveis',
+  calorias: 'calorias',
+  proteinas: 'proteinas'
+} as const
+
+export type FoodScalarFieldEnum = (typeof FoodScalarFieldEnum)[keyof typeof FoodScalarFieldEnum]
 
 
 export const SortOrder = {

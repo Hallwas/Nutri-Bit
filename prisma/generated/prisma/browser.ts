@@ -27,3 +27,33 @@ export type User = Prisma.UserModel
  * 
  */
 export type Profile = Prisma.ProfileModel
+/**
+ * Model MealPlan
+ * 
+ */
+export type MealPlan = Prisma.MealPlanModel
+/**
+ * Model Week
+ * 
+ */
+export type Week = Prisma.WeekModel
+/**
+ * Model Day
+ * 
+ */
+export type Day = Prisma.DayModel
+/**
+ * Model Meal
+ * 
+ */
+export type Meal = Prisma.MealModel
+/**
+ * Model Ingredient
+ * 
+ */
+export type Ingredient = Prisma.IngredientModel
+/**
+ * Model Food
+ * 
+ */
+export type Food = Prisma.FoodModel

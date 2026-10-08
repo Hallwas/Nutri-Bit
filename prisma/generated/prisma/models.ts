@@ -10,4 +10,10 @@
  */
 export type * from './models/User.js'
 export type * from './models/Profile.js'
+export type * from './models/MealPlan.js'
+export type * from './models/Week.js'
+export type * from './models/Day.js'
+export type * from './models/Meal.js'
+export type * from './models/Ingredient.js'
+export type * from './models/Food.js'
 export type * from './commonInputTypes.js'

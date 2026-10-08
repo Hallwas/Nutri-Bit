@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider     = "prisma-client"
   output       = "../prisma/generated/prisma"
@@ -31,4 +26,78 @@ model Profile {
   avatarUrl String?
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
+  mealPlans MealPlan[]
+}
+
+// Tabelas novas
+
+model MealPlan {
+  id          Int      @id @default(autoincrement())
+  name        String
+  goal        String
+  description String?
+  active      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  profile     Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profileId   Int
+  weeks       Week[]
+}
+
+model Week {
+  id         Int       @id @default(autoincrement())
+  number     Int
+  label      String?
+  startDate  DateTime?
+  mealPlan   MealPlan  @relation(fields: [mealPlanId], references: [id], onDelete: Cascade)
+  mealPlanId Int
+  days       Day[]
+}
+
+model Day {
+  id       Int    @id @default(autoincrement())
+  weekday  String
+  order    Int
+  week     Week   @relation(fields: [weekId], references: [id], onDelete: Cascade)
+  weekId   Int
+  meals    Meal[]
+}
+
+model Meal {
+  id          Int          @id @default(autoincrement())
+  name        String
+  type        String
+  time        String?
+  day         Day          @relation(fields: [dayId], references: [id], onDelete: Cascade)
+  dayId       Int
+  ingredients Ingredient[]
+}
+
+model Ingredient {
+  id       Int     @id @default(autoincrement())
+  quantity Float
+  unit     String
+  note     String?
+  meal     Meal    @relation(fields: [mealId], references: [id], onDelete: Cascade)
+  mealId   Int
+  food     Food    @relation(fields: [foodId], references: [id])
+  foodId   Int
+}
+
+model Food {
+  id          Int          @id @default(autoincrement())
+  tbcaCode    String?      @unique
+  name        String
+  umidade                   Float?
+  glicose                   Float?
+  frutose                   Float?
+  lactose                   Float?
+  sacarose                  Float?
+  acucaresTotaisDisponiveis Float?
+  amidoTotal                Float?
+  amidoDisponivel           Float?
+  carboidratosDisponiveis   Float?
+  calorias                  Float?
+  proteinas                 Float?
+  ingredients Ingredient[]
 }
